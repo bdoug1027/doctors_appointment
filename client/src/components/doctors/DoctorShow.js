@@ -23,7 +23,15 @@ const DoctorShow = () => {
       <button>Edit</button>
       <button>Appointment</button>
       <button>Delete</button>
+      <Link 
+        to={`/${doctor.id}/appointments`}
+        state={{ doctorFirst_name: first_name }}
+      >
+        <Button>Appointment</Button>
+      </Link>
+      <Button>Delete</Button>
     </>
+
   )
 }
 

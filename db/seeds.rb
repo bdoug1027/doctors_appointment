@@ -14,7 +14,7 @@
     user = User.create(
       first_name: Faker::FunnyName.name,
       last_name: Faker::Superhero.name,
-      phone: Faker::PhoneNumber,
+      phone: Faker::PhoneNumber.cell_phone,
       note: Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 4)
     )
 
