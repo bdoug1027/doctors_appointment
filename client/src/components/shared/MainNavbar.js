@@ -1,31 +1,29 @@
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import {DrAppts} from '../styles/shared';
+import { NavigationItems } from '../styles/shared';
+import { NavItems } from '../styles/shared';
 
 const MainNavbar = () => (
   <>
-    <Navbar bg="light" expand="lg">
-      <Container fluid>
-        <Navbar.Brand>
-          <Link to='/'>DrAppts</Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav className="me-auto">
-          </Nav>
+    <Navbar >
+      <Container>
+        <Link to='/'>
+          <DrAppts>DrAppts</DrAppts>
+          </Link>
           <Nav>
-            
-            <Nav.Link>
+            <NavigationItems>
               <Link to="/doctors">
-                Doctors
+              <NavItems> Doctors </NavItems>
               </Link>
-            </Nav.Link>
-            <Nav.Link>
+            </NavigationItems>
+            <NavigationItems>
               <Link to="/users">
-                Users
+                <NavItems> Users </NavItems>
               </Link>
-            </Nav.Link>
+            </NavigationItems>
           </Nav>
-        </Navbar.Collapse>
+       
       </Container>
     </Navbar>
   </>
