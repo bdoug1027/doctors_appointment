@@ -14,7 +14,7 @@ import {Container, Row, Col} from 'react-bootstrap'
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
   <Card.Title>Dr. Name
-      <p>Leopallone</p> </Card.Title>
+      </Card.Title>
     
     <Button styled={{textAlign:'center'}} variant="primary">Show</Button>
   </Card.Body>
@@ -23,7 +23,7 @@ import {Container, Row, Col} from 'react-bootstrap'
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
   <Card.Title>Dr. Name
-      <p>Leopallone</p> </Card.Title>
+       </Card.Title>
     
     <Button variant="primary">Show</Button>
   </Card.Body>
@@ -32,7 +32,7 @@ import {Container, Row, Col} from 'react-bootstrap'
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
   <Card.Title>Dr. Name
-      <p>Leopallone</p> </Card.Title>
+       </Card.Title>
     
     <Button variant="primary">Show</Button>
   </Card.Body>
@@ -41,7 +41,7 @@ import {Container, Row, Col} from 'react-bootstrap'
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
     <Card.Title>Dr. Name
-      <p>Leopallone</p> </Card.Title>
+    </Card.Title>
     
     <Button variant="primary">Show</Button>
   </Card.Body>

@@ -49,7 +49,7 @@ const Doctors = () => {
     <Col><Card style={{ width: '10rem',textAlign:'center'}}>
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
-  <Card.Title>
+  <Card.Title style={{marginRight:'60px', fontSize:'15px'}}>
      Dr. Name
   </Card.Title>
     
@@ -59,7 +59,7 @@ const Doctors = () => {
     <Col><Card style={{ width: '10rem',textAlign:'center' }}>
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
-  <Card.Title>
+  <Card.Title style={{marginRight:'60px', fontSize:'15px'}}>
     Dr. Name
   </Card.Title>
     
@@ -69,7 +69,7 @@ const Doctors = () => {
     <Col><Card style={{ width: '10rem',textAlign:'center' }}>
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
-  <Card.Title>
+  <Card.Title style={{marginRight:'60px', fontSize:'15px'}}>
     Dr. Name
    </Card.Title>
     
@@ -79,7 +79,7 @@ const Doctors = () => {
     <Col><Card style={{ width: '10rem',textAlign:'center' }}>
   <Card.Img variant="top" src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
   <Card.Body>
-    <Card.Title>
+    <Card.Title style={{marginRight:'60px', fontSize:'15px'}}>
       Dr. Name
     </Card.Title>
     
