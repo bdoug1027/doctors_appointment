@@ -7,20 +7,22 @@ import Users from "./components/users/Users";
 import Nomatch from "./components/shared/Nomatch";
 import UserShow from "./components/users/UserShow";
 import DoctorShow from "./components/doctors/DoctorShow";
-import Appointments from "./components/appointments/Appointments"
-
+ import Appointments from "./components/appointments/Appointments";
+ 
 const App = () => (
   <>
     <MainNavbar />
+   
     <Routes>
       <Route path='/' element={ <Home /> } />
       <Route path='/doctors' element={ <Doctors /> } />
       <Route path='/doctors/:doctorId' element={ <DoctorShow /> } />
-      <Route path='/:doctorId/appointments' element={ <Appointments /> } />
+      <Route path='/:doctorId/appointments' element={ <Appointments /> } /> }
       <Route path='/users' element={ <Users /> } />
       <Route path='/users/:userId' element={ <UserShow /> } />
       <Route path='*' element={ <Nomatch /> } />
     </Routes>
+   
     <Footer />
   </>
 )
