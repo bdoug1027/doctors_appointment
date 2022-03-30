@@ -18,13 +18,10 @@
       note: Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 4)
     )
 
-    # Appointment.create(
-    #   appointment: appointment.sample,
-    #   doctor_id: doctor.id,
-    #   user_id: user.id
-    #   # date_id: date.id
-      
-    # )
+    Appointment.create(
+      doctor_id: doctor.id,
+      user_id: user.id,
+    )
   end
 end
 

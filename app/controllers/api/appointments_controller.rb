@@ -3,7 +3,6 @@ class Api::AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :update, :destroy]
 
   def index
-    
     render json: @doctor.appointments
   end
 
@@ -11,12 +10,12 @@ class Api::AppointmentsController < ApplicationController
     render json: @appointment
   end
 
-  def unenrolledUsers
+  def unappointUsers
     @users = User.all - @doctor.users 
-    render json: { users: @users }
+    render json: @users
   end
 
-  def enrolledUsers
+  def appointUsers
     render json: @doctor.users 
   end
 
