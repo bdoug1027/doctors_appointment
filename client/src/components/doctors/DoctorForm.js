@@ -1,19 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { DoctorConsumer } from '../../providers/DoctorProvider';
 
-const DoctorForm = ({ addDoctor, setAdd }) => {
+
+const DoctorForm = ({ addDoctor, setAdd, id, first_name, last_name, bio, specialty, updateDoctor, setEdit }) => {
   const [doctor, setDoctor] = useState({ first_name: '', last_name: '', specialty: '', bio: '' })
 
+    useEffect( () => {
+      if (id) {
+        setDoctor({ first_name, last_name, bio, specialty})
+      }
+    }, [])
+    
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (id) {
+      updateDoctor(id, doctor)
+      setEdit(false)
+    } else {
     addDoctor(doctor)
     setAdd(false)
+    }
     setDoctor({ first_name: '', last_name: '', specialty: '', bio: '' })
   }
 
   return (
     <>
-      <h1>Create Doctor</h1>
+      <h1>{ id ? 'Edit' : 'Create'} Doctor</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>First Name</Form.Label>
@@ -50,9 +63,6 @@ const DoctorForm = ({ addDoctor, setAdd }) => {
           <option value="OBGYN">OBGYN</option>
         </Form.Select>
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
         <Form.Group className="mb-3">
           <Form.Label>Bio</Form.Label>
           <Form.Control 
@@ -64,9 +74,17 @@ const DoctorForm = ({ addDoctor, setAdd }) => {
             required
           />
         </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
     </>
   )
 }
 
-export default DoctorForm;
+  const ConnectedDoctorForm =(props) => (
+    <DoctorConsumer>
+      {value => <DoctorForm {...props} {...value} /> }
+    </DoctorConsumer>
+  )
+export default ConnectedDoctorForm;

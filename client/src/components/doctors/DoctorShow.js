@@ -3,11 +3,15 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, ListGroup } from 'react-bootstrap';
+import { DoctorConsumer } from '../../providers/DoctorProvider';
+import DoctorForm from './DoctorForm'
 
-const DoctorShow = () => {
+const DoctorShow = ({ deleteDoctor }) => {
   const [doctor, setDoctor] = useState({ first_name: '', last_name: '', specialty: '', bio: '' })
   const [appointedUsers, setAppointedUsers] = useState([])
   const { doctorId } = useParams() 
+  const [editing, setEdit] = useState(false)
+
 
   useEffect( () => {
     axios.get(`/api/doctors/${doctorId}`)
@@ -29,8 +33,24 @@ const DoctorShow = () => {
       <h3>{last_name}</h3>
       <h3>{specialty}</h3>
       <h3>{bio}</h3>
-      <Button>Edit</Button>
-      <Button>Delete</Button>
+      { editing ?
+        <>
+          <DoctorForm
+          {...doctor}
+          setEdit={setEdit}
+          />
+        <Button onClick={() => setEdit(false)}>
+          Cancel
+          </Button>
+      </>
+      :
+      <Button onClick={() => setEdit(true)}>
+        Edit
+      </Button>
+      }
+      <Button onClick={() => deleteDoctor(doctor.id)}>
+        Delete
+        </Button>
       <Link 
         to={`/${doctor.id}/appointments`}
         state={{ doctorFirst_name: first_name }}
@@ -52,4 +72,9 @@ const DoctorShow = () => {
   )
 }
 
-export default DoctorShow;
+const ConnectedDoctorShow = (props) => (
+  <DoctorConsumer>
+    { value => <DoctorShow {...props} {...value} /> }
+  </DoctorConsumer>
+)
+export default ConnectedDoctorShow;

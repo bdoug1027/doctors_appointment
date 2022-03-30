@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap';
 import { UserConsumer } from '../../providers/UserProvider';
 import UserForm  from './UserForm'
-const UserShow = ({deleteUser, }) => {
+const UserShow = ({ deleteUser }) => {
   const [user, setUser] = useState({ first_name: '', last_name: '', phone: '', note: ''})
   const [doctors, setDoctors] = useState ([])
   const { userId } = useParams()

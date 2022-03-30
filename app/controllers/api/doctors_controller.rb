@@ -36,7 +36,7 @@ class Api::DoctorsController < ApplicationController
   end
 
   private 
-    def course_params
+    def doctor_params
       params.require(:doctor).permit(:first_name, :last_name, :specialty, :bio)
     end
 

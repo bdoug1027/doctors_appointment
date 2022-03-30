@@ -1,6 +1,8 @@
 import { useState, useEffect} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { UserConsumer } from '../../providers/UserProvider';
+
+
 const UserForm = ({ addUser, setAdd, id, first_name, last_name, phone, note, updateUser, setEdit}) => {
   const [user, setUser] = useState({ first_name: '', last_name: '', phone: '', note:'' })
 

@@ -6,11 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProvider from './providers/UserProvider'
+import DoctorProvider from './providers/DoctorProvider'
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <UserProvider>
+      <DoctorProvider>
       <App />
+      </DoctorProvider>
     </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
