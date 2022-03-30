@@ -20,6 +20,7 @@ const DoctorShow = () => {
     .then( res => setAppointedUsers(res.data))
     .catch( err => console.log(err))
   }, [])
+
   
   const { first_name, last_name, specialty, bio } = doctor
   return(
@@ -35,7 +36,8 @@ const DoctorShow = () => {
         state={{ doctorFirst_name: first_name }}
       >
         <Button>Appointment</Button>
-      </Link>
+        </Link>
+        <h3>All Users with appointments with {first_name}</h3>
       <ListGroup>
         { appointedUsers.map( u => 
           <Link to={`/users/${u.id}`}>

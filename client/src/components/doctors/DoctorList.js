@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
-const DoctorList = ({ doctors }) => (
+const DoctorList = ({ doctors, deleteDoctor }) => (
   <>
     <Container>
       <Row>

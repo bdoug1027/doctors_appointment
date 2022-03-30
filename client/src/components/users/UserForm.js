@@ -1,19 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { Form, Button } from 'react-bootstrap';
-
-const UserForm = ({ addUser, setAdd }) => {
+import { UserConsumer } from '../../providers/UserProvider';
+const UserForm = ({ addUser, setAdd, id, first_name, last_name, phone, note, updateUser, setEdit}) => {
   const [user, setUser] = useState({ first_name: '', last_name: '', phone: '', note:'' })
+
+  useEffect( () => {
+    if (id) {
+      setUser({ first_name, last_name, note, phone})
+    }
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (id) {
+      updateUser(id, user)
+      setEdit(false)
+    } else {
     addUser(user)
     setAdd(false)
+    }
     setUser({ first_name: '', last_name: '', phone: '', note: '' })
   }
 
   return (
     <>
-      <h1>Create User</h1>
+      <h1>{ id ? 'Edit' : 'Create'}User</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>First Name</Form.Label>
@@ -67,4 +78,9 @@ const UserForm = ({ addUser, setAdd }) => {
   )
 }
 
-export default UserForm;
+const ConnectedUserForm = (props) => (
+  <UserConsumer>
+    { value => <UserForm {...props} {...value} /> }
+  </UserConsumer>
+)
+export default ConnectedUserForm;

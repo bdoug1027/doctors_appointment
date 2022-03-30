@@ -25,11 +25,14 @@ const Appointments = () => {
     axios.get(`/api/doctors/${doctorId}/appoint`)
     .then( res => setAppoint( res.data))
     .catch( err => console.log(err))
-  })
+  }, [])
 
   const addAppointment = (appointment) => {
     axios.post(`/api/doctors/${doctorId}/appointments`, { appointment })
-    .then( res => setAppoinments([...appointments, res.data]))
+    .then( res => {
+      setAppoinments([...appointments, res.data])
+      window.location.href = `/${doctorId}/appointments`
+    })
     .catch( err => console.log(err) )
   }
   return (

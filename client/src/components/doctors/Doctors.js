@@ -19,6 +19,11 @@ const Doctors = () => {
       .catch( err => console.log(err))
   }
 
+  const deleteDoctor = (id) => {
+    axios.delete(`/api/doctors/${id}`)
+    .then( res => setDoctors( doctors.filter( d => d.id !== id )))
+    .catch( err => console.log(err))
+  }
   return (
     <>
       {
@@ -36,6 +41,7 @@ const Doctors = () => {
       <h1>Doctors</h1>
       <DoctorList
         doctors={doctors}
+        deleteDoctor={deleteDoctor}
       />
     </>
   )
