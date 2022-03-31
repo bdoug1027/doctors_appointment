@@ -8,6 +8,7 @@ export const AppointmentConsumer = AppointmentContext.Consumer
 
 const AppointmentProvider = ({ children }) => {
   const [appointments, setAppointments] = useState([])
+  const [appoint, setAppoint] = useState([])
   const navigate = useNavigate()
 
   const getAllAppointments = (doctorId) => {
@@ -16,9 +17,18 @@ const AppointmentProvider = ({ children }) => {
     .catch( err => console.log(err) )
   }
 
-  const addAppointment = (doctorId, appointment) => {
+  const getAppointUsers = (doctorId) => {
+    axios.get(`/api/doctors/${doctorId}/appoint`)
+    .then( res => setAppoint( res.data))
+    .catch( err => console.log(err) )
+  }
+
+  const addAppointment = (doctorId, appointment, id) => {
     axios.post(`/api/doctors/${doctorId}/appointments`, { appointment })
-      .then(res => setAppointments([...appointments, res.data]))
+      .then(res => {
+        setAppointments([...appointments, res.data])
+        navigate('/doctors')
+      })
       .catch( err => console.log(err) )
   }
 
@@ -49,8 +59,10 @@ const AppointmentProvider = ({ children }) => {
 
   return (
     <AppointmentContext.Provider value={{
+      appoint,
       appointments,
       getAllAppointments: getAllAppointments,
+      getAppointUsers: getAppointUsers,
       addAppointment: addAppointment,
       updateAppointment: updateAppointment,
       deleteAppointment: deleteAppointment,

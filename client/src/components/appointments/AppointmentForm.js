@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { AppointmentConsumer } from '../../providers/AppointmentProvider';
 
 const AppointmentForm = ({ addAppointment, setAdd, doctorId }) => {
   const [appointment, setAppoints] = useState({ date: '', time: '', why: '', user_id: 0})
@@ -12,7 +13,7 @@ const AppointmentForm = ({ addAppointment, setAdd, doctorId }) => {
     }, [])
   const handleSubmit = (e) => {
     e.preventDefault()
-    addAppointment(appointment)
+    addAppointment(doctorId, appointment)
     setAdd(false)
     setAppoints({date: '', time: '', why: '', user_id: 0})
   }
@@ -55,10 +56,10 @@ const AppointmentForm = ({ addAppointment, setAdd, doctorId }) => {
 
 
 }
-// const ConnectedEnrollmentForm = (props) => (
-//   <EnrollmentConsumer>
-//     { value => <EnrollmentForm {...props} {...value} />}
-//   </EnrollmentConsumer>
-// )
+const ConnectedAppointmentForm = (props) => (
+  <AppointmentConsumer>
+    { value => <AppointmentForm {...props} {...value} />}
+  </AppointmentConsumer>
+)
 
-export default AppointmentForm;
+export default ConnectedAppointmentForm;

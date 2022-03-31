@@ -1,9 +1,11 @@
 import Appointment from './Appointment';
-
-const AppointmentList = ({ first_name, appointment, appoint}) => (
+import { AppointmentConsumer } from '../../providers/AppointmentProvider';
+const AppointmentList = ({ first_name, appoint}) => (
+  <AppointmentConsumer>
+    { value => (
   <>
   <h1>{first_name}</h1>
-    { appointment.map( a => 
+    { value.appointments.map( a => 
       <Appointment 
         key={a.id}
         {...a}
@@ -11,6 +13,10 @@ const AppointmentList = ({ first_name, appointment, appoint}) => (
       />
     )}
   </>
+  )}
+  </AppointmentConsumer>
 )
 
 export default AppointmentList
+
+

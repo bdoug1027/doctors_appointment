@@ -7,12 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProvider from './providers/UserProvider'
 import DoctorProvider from './providers/DoctorProvider'
+import AppointmentProvider from './providers/AppointmentProvider'
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <UserProvider>
       <DoctorProvider>
-      <App />
+        <AppointmentProvider>
+          <App />
+        </AppointmentProvider>
       </DoctorProvider>
     </UserProvider>
     </BrowserRouter>

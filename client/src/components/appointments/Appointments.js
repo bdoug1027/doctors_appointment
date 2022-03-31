@@ -1,46 +1,29 @@
 import {useState, useEffect} from 'react';
-import axios from 'axios';
 import {useParams, useLocation } from 'react-router-dom';
 import AppointmentList from './AppointmentList';
 import AppointmentForm from './AppointmentForm';
 import {Button} from 'react-bootstrap'
-const Appointments = () => {
-  const [appointments, setAppoinments] = useState([])
-  const [appoint, setAppoint] = useState([])
+import { AppointmentConsumer } from '../../providers/AppointmentProvider';
+const Appointments = ({ appoint, appointments, getAllAppointments, getAppointUsers }) => {
+  
   const [adding, setAdd] = useState(false)
 
   const {doctorId} = useParams()
 
 
-  const location =useLocation()
+  const location = useLocation()
   const {doctorFirst_name} = location.state
   
-  useEffect( () => {
-    axios.get(`/api/doctors/${doctorId}/appointments`)
-    .then( res => setAppoinments(res.data) )
-    .catch( err => console.log(err) )
+  useEffect( () =>{
+    getAllAppointments(doctorId)
+    getAppointUsers(doctorId)
   }, [])
-
-  useEffect( () => {
-    axios.get(`/api/doctors/${doctorId}/appoint`)
-    .then( res => setAppoint( res.data))
-    .catch( err => console.log(err))
-  }, [])
-
-  const addAppointment = (appointment) => {
-    axios.post(`/api/doctors/${doctorId}/appointments`, { appointment })
-    .then( res => {
-      setAppoinments([...appointments, res.data])
-      window.location.href = `/${doctorId}/appointments`
-    })
-    .catch( err => console.log(err) )
-  }
   return (
     <>
     { adding ? 
        <>
         <AppointmentForm
-          addAppointment={addAppointment}
+       
           setAdd={setAdd}
           doctorId={doctorId}
         />
@@ -49,18 +32,18 @@ const Appointments = () => {
         :
         <Button onClick={() => setAdd(true)}>+</Button>
       }
-      <h1>All Appointments for {doctorFirst_name}</h1>
+      <h1>All Appointments for Doctor: {doctorFirst_name}</h1>
       <AppointmentList
-      appointment={appointments}
       appoint={appoint}
+      appointments={appointments}
       />
     </>
   )
 }
-// const ConnectedEnrollments = (props) => (
-//   <EnrollmentConsumer>
-//     { value => <Enrollments {...props} {...value} />}
-//   </EnrollmentConsumer>
-// )
+const ConnectedAppointments = (props) => (
+  <AppointmentConsumer>
+    { value => <Appointments {...props} {...value} />}
+  </AppointmentConsumer>
+)
 
-export default Appointments;
+export default ConnectedAppointments;

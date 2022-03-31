@@ -57,7 +57,7 @@ const DoctorShow = ({ deleteDoctor }) => {
       >
         <Button>Appointment</Button>
         </Link>
-        <h3>All Users with appointments with {first_name}</h3>
+        <h3>All Users with appointments</h3>
       <ListGroup>
         { appointedUsers.map( u => 
           <Link to={`/users/${u.id}`}>

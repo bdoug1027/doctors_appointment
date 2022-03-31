@@ -1,4 +1,4 @@
-
+import { Button } from 'react-bootstrap';
 import { useState} from 'react';
 import DoctorList from './DoctorList';
 import DoctorForm from './DoctorForm';
@@ -15,10 +15,10 @@ const Doctors = () => {
           <DoctorForm 
             setAdd={setAdd}
           />
-          <button onClick={() => setAdd(false)}>Cancel</button>
+          <Button onClick={() => setAdd(false)}>Cancel</Button>
         </>
         :
-        <button onClick={() => setAdd(true)}>+</button>
+        <Button onClick={() => setAdd(true)}>+</Button>
       }
       <h1>Doctors</h1>
       <DoctorList
